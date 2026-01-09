@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
-
 const levelInstructions = {
   serious: '誠実で信頼性の高い理由を作成してください。真面目で説得力のある内容にしてください。',
   normal: '自然でバランスの取れた言い訳を作成してください。現実的で納得しやすい内容にしてください。',
@@ -27,6 +23,22 @@ const scenarioPrompts: { [key: number]: string } = {
 
 export async function POST(request: NextRequest) {
   try {
+    // APIキーをチェック
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    console.log('API Key exists:', !!apiKey);
+    console.log('API Key length:', apiKey?.length || 0);
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: 'ANTHROPIC_API_KEYが設定されていません' },
+        { status: 500 }
+      );
+    }
+
+    const anthropic = new Anthropic({
+      apiKey: apiKey,
+    });
+
     const { scenarioId, level } = await request.json();
 
     if (!scenarioId || !level) {
@@ -71,7 +83,7 @@ ${levelInstruction}
 上記の条件に基づいて、言い訳を生成してください。`;
 
     const message = await anthropic.messages.create({
-      model: 'claude-haiku-4-20251001',
+      model: 'claude-haiku-4-5-20251001',
       max_tokens: 1024,
       messages: [
         {
