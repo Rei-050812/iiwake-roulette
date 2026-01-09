@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 言い訳ジェネレーター
 
-## Getting Started
+中高大学生をターゲットにした「言い訳ジェネレーター」Webアプリです。
+AIが状況に応じた説得力のある言い訳を生成します。
 
-First, run the development server:
+## 機能
+
+- **10個のシチュエーション**: 学校、友達、恋愛、バイトの4カテゴリー
+- **もっともらしさレベル調整**: 真面目 / 普通 / ちょいふざけ / 完全ネタ
+- **コピー機能**: ワンクリックでクリップボードにコピー
+- **再生成機能**: 気に入らなければ何度でも再生成
+- **SNSシェア**: X(Twitter)でシェア可能
+- **生成履歴**: 過去5件の履歴を保存
+
+## 技術スタック
+
+- **Frontend**: Next.js 16 (App Router) + React + TypeScript
+- **Styling**: Tailwind CSS
+- **AI**: Claude Haiku 4.5 (Anthropic API)
+- **Deploy**: Vercel
+
+## セットアップ
+
+1. リポジトリをクローン
+
+```bash
+git clone https://github.com/your-username/iiwake-generator.git
+cd iiwake-generator
+```
+
+2. 依存関係をインストール
+
+```bash
+npm install
+```
+
+3. 環境変数を設定
+
+`.env.local` ファイルを作成し、Anthropic APIキーを設定:
+
+```
+ANTHROPIC_API_KEY=your_api_key_here
+```
+
+4. 開発サーバーを起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 でアプリが起動します。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## デプロイ
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Vercelにデプロイする場合:
 
-## Learn More
+1. GitHubリポジトリをVercelに接続
+2. 環境変数 `ANTHROPIC_API_KEY` を設定
+3. デプロイ
 
-To learn more about Next.js, take a look at the following resources:
+## ライセンス
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
