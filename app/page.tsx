@@ -328,8 +328,12 @@ export default function Home() {
 
   const loadHistoryItem = (item: HistoryItem) => {
     setSelectedScenario(item.scenarioId);
-    setSelectedLevel(item.level);
     setGeneratedExcuse(item.excuse);
+    setAiComment(item.aiComment || '');
+    if (item.zone) {
+      const zone = zones.find(z => z.name === item.zone);
+      setSelectedZone(zone || null);
+    }
     setShowHistory(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
