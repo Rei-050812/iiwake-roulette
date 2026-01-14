@@ -556,8 +556,20 @@ export default function Home() {
         )}
 
         {/* フッター */}
-        <div className="mt-12 text-center text-sm text-gray-500">
+        <div className="mt-12 text-center text-sm text-gray-500 space-y-3">
           <p>困った時の救世主</p>
+          <div className="border-t border-gray-200 pt-4">
+            <p className="text-gray-600 mb-1">制作</p>
+            <a
+              href="https://zero-venture.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-purple-600 hover:text-purple-700 font-medium hover:underline transition-colors"
+            >
+              ZEROVENTURE - Web制作
+            </a>
+            <p className="text-xs text-gray-500 mt-2">ホームページ・LP・Webアプリ開発のご相談承ります</p>
+          </div>
         </div>
 
         {/* トースト通知 */}
